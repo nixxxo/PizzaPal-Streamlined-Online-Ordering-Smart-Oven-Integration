@@ -3,8 +3,11 @@
 ## Team Members
 
 Team Leader: Baburov, Nikola N.N.
+
 Main Developer: Knez, Norbert N.S.
+
 Business Analyst: Todorov, Bozhidar B.T.
+
 R&D and Quality Assurance: Haroutiunian, Aron Haroutiunian A.P.J.
 
 ## Project Links
