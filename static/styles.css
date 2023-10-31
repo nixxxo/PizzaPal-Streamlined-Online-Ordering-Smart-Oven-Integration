@@ -19,6 +19,11 @@ nav {
 
 }
 
+nav a{
+    text-decoration: none;
+    color: white;
+}
+
 #logo {
     width: 200px;
     margin-right: auto;

@@ -1,0 +1,57 @@
+.title{
+    margin:0.8em 0em;
+    text-align: center;
+    font-size: 3em;
+}
+
+.tracker-form-section {
+    background-color: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50%;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.tracker-form-section form{
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tracker-form-section input{
+    border: 5px solid #ED190F;
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    transition: all;
+    transition-duration: 150ms;
+}
+
+.tracker-form-section input:hover{
+    scale: 110%;
+    transition: all;
+    transition-duration: 150ms;
+}
+
+button {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    background-color: #ED190F;
+    color: white;
+    border-radius: 5px;
+    padding: 1em 2em;
+    transition: all;
+    transition-duration: 150ms;
+}
+
+button:hover{
+    scale: 110%;
+    transition: all;
+    transition-duration: 150ms;
+}

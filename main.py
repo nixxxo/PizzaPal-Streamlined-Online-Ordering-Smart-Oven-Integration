@@ -17,6 +17,7 @@ load_dotenv()
 
 # retrieve MongoDB link from environment variable
 MONGO_DB_LINK = os.getenv("MONGO_DB_LINK")
+password = str(os.getenv("PASSWORD"))
 
 # create MongoClient instance
 client = MongoClient(MONGO_DB_LINK)
@@ -71,7 +72,7 @@ def update_status(order_id, new_status):
 
 
 @app.route('/dashboard')
-def display_orders():
+def dashboard():
     orders = get_order_data()
     # Format date and time in the orders
     for order in orders:
@@ -139,6 +140,29 @@ def add_order(name, phone, address, postcode, delivery_method, status='Not Start
 @app.route('/')
 def home():
     return render_template('index.html')
+
+
+## Tracker ##
+
+@app.route('/tracker-login', methods=['GET', 'POST'])
+def tracker_login():
+    if request.method == 'POST':
+        phone_number = request.form['phone_number']
+        order = orders.find_one({'Phone': phone_number})
+        if order:
+            return redirect(url_for('tracker', phone_number=phone_number))
+        else:
+            return "Phone number not found. Please try again."
+
+    return render_template('tracker_login.html')
+
+@app.route('/tracker/<phone_number>')
+def tracker(phone_number):
+    order = orders.find_one({'Phone': phone_number})
+    if order:
+        return render_template('tracker.html', order=order)
+    else:
+        return "Order not found."
 
 
 if __name__ == '__main__':

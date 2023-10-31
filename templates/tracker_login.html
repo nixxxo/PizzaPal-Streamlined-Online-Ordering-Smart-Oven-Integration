@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracker Login</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <link rel="stylesheet" href="../static/tracker.css">
+</head>
+<body>
+    <nav>
+        <img src="../static/images/logo.png" alt="logo" id="logo">
+        <span class="nav_text"><a href="/">home</a></span>
+        <span class="nav_text"><a href="/tracker-login">tracker</a></span>
+        <div id="white_block">
+            <img src="../static/images/shooping-cart-icon.png" alt="shooping cart icon" id="shopping-cart-icon">
+        </div>
+    </nav>
+    <div class="tracker-form-section">
+        <h1 class="title">Check Your Order Status</h1>
+        <form action="/tracker-login" method="post">
+            <input type="text" id="phone_number" name="phone_number" required placeholder="Phone Number (ex. +06382832930)"><br><br>
+            <button type="submit" >Check Tracker</button>
+        </form>
+    </div>
+</body>
+</html>
