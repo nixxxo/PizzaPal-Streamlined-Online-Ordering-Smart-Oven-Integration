@@ -1,0 +1,10 @@
+nav {
+    float: right;
+}
+.nav_text {
+    margin: 25px;
+}
+
+.nav_text:hover {
+    color:red;
+}
