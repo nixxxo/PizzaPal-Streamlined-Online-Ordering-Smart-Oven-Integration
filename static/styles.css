@@ -72,20 +72,21 @@ section {
 article {
     background-color: #FFFDF1;
     width: 100%;
-    height: 400px;
+    height: 800px;
     padding-top: 10px;
 }
 
 .pizza_block {
+    margin-bottom: 10px;
     background-color: #ffe1be;
     width: 200px;
     height: 350px;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    margin-left: 50px;
+    margin-left: 175px;
     flex-direction: column;
-    align-items: center;
+    float: left;
 }
 
 .pizza_white_box {
