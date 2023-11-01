@@ -156,11 +156,12 @@ def tracker_login():
 
     return render_template('tracker_login.html')
 
+
 @app.route('/tracker/<phone_number>')
 def tracker(phone_number):
     order = orders.find_one({'Phone': phone_number})
     if order:
-        return render_template('tracker.html', order=order)
+        return render_template('tracker.html', order=order, status=order['Status'])
     else:
         return "Order not found."
 

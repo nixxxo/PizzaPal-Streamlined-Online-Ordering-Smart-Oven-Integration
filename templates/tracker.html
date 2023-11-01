@@ -3,28 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Order Tracker</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <link rel="stylesheet" href="../static/tracker.css">
 </head>
 <body>
-    <h1>Order Details</h1>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Postcode</th>
-            <th>Delivery Method</th>
-            <th>Status</th>
-        </tr>
-        <tr>
-            <td>{{ order.Date }}</td>
-            <td>{{ order.Name }}</td>
-            <td>{{ order.Phone }}</td>
-            <td>{{ order.Address }}</td>
-            <td>{{ order.Postcode }}</td>
-            <td>{{ order.DeliveryMethod }}</td>
-            <td>{{ order.Status }}</td>
-        </tr>
-    </table>
+    <nav>
+        <img src="../static/images/logo.png" alt="logo" id="logo">
+        <span class="nav_text"><a href="/">home</a></span>
+        <span class="nav_text"><a href="/tracker-login">tracker</a></span>
+        <div id="white_block">
+            <img src="../static/images/shooping-cart-icon.png" alt="shooping cart icon" id="shopping-cart-icon">
+        </div>
+    </nav>
+    <div>
+        <div class="tracker-main">
+            <h1 class="title">
+                Your Order
+            </h1>
+            <div class="order-info">
+                <div class="order-products"></div>
+                <div class="order-time"></div>
+            </div>
+        </div>
+        <div>
+            <h1 class="title">
+                Details
+            </h1>
+            <div class="client-info">
+                <span>{{ order.Name }}</span>
+            </div>
+            <div class="client-info">
+                <span>{{ order.Phone }}</span>
+            </div>
+            <div class="client-info">
+                <span>{{ order.Address }}</span>
+            </div>
+            <div class="client-info">
+                <span>{{ order.Postcode }}</span>
+            </div>
+            <span class="client-delivery">{{ order.DeliveryMethod }}</span>
+        </div>
+    </div>
+    <div class="tracker-progress">
+        <h1 class="title">Tracker</h1>
+        <div class="wrap-circles">
+            <div class="circle per-25">
+                <div class="inner">0%</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
