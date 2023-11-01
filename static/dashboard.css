@@ -70,7 +70,7 @@ article {
     width: 55%;
     border-radius: 30px;
     text-align: center;
-    box-shadow: 5px 5px 10px gray;
+    box-shadow: 5px 5px 10px dimgray;
 }
 
 #details_block {
@@ -126,7 +126,7 @@ input[type=radio] {
 }
 
 input[type=submit] {
-    font-family: Roboto;
+    font-family: Roboto, serif;
     color: white;
     margin-top: 40px;
     border-style: hidden;

@@ -86,7 +86,7 @@ article {
     margin-left: 150px;
     flex-direction: column;
     float: left;
-    box-shadow: 3px 3px 5px gray;
+    box-shadow: 3px 3px 5px dimgray;
 }
 
 .pizza_white_box {
@@ -164,7 +164,7 @@ article {
 }
 
 #desc {
-    font-family: Roboto;
+    font-family: Roboto, serif;
     padding-top: 5px;
     text-align: center;
     padding-bottom: 30px;
