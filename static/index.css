@@ -86,6 +86,7 @@ article {
     margin-left: 150px;
     flex-direction: column;
     float: left;
+    box-shadow: 3px 3px 5px gray;
 }
 
 .pizza_white_box {

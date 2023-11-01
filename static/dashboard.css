@@ -33,7 +33,7 @@ nav {
 
 #white_block {
     margin: 10px;
-    background-color: white;
+    background-color: #FF726B;
     height: 65px;
     width: 65px;
     border-style: solid;
@@ -58,12 +58,85 @@ nav {
 article {
     background-color: #ffe7b2;
     width: 100%;
-    height: 1000px;
+    height: 833px;
 }
 
-#your_order_block {
-    padding-top: 100px;
-    background-color: white;
-    height: 300px;
+#your_order_block, #details_block {
+    float: left;
+    margin-top: 150px;
+    margin-left: 100px;
+    background-color: #F9F9F9;
+    height: 55%;
+    width: 55%;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 5px 5px 10px gray;
+}
+
+#details_block {
+    width: 25%;
+    margin-left: 150px;
+    height: 70%;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+#products, #time_to_prepare {
+    display: flex;
+    float: left;
+    margin-left: 65px;
     width: 50%;
+    height: 60%;
+    background-color: white;
+    border-color: red;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+#time_to_prepare {
+    width: 30%;
+}
+
+h2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=text] {
+    margin-top: 15px;
+    border-color: red;
+    border-radius: 10px;
+    border-width: 3px;
+    width: 60%;
+    height: 35px;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+input[type=radio] {
+    margin-top: 50px;
+    margin-right: 10px;
+    accent-color: red;
+}
+
+#takeout {
+    margin-left: 20px;
+}
+
+input[type=submit] {
+    font-family: Roboto;
+    color: white;
+    margin-top: 40px;
+    border-style: hidden;
+    background-color: red;
+    border-radius: 10px;
+    height: 50px;
+    width: 50%;
+    font-size: large;
+}
+
+input:placeholder-shown {
+    font-style: italic;
 }

@@ -12,12 +12,30 @@
         <span class="nav_text">home</span>
         <span class="nav_text">tracker</span>
         <div id="white_block">
-            <img src="../static/images/shooping-cart-icon.png" alt="shooping cart icon" id="shopping-cart-icon">
+            <img src="../static/images/shopping-cart-icon.png" alt="shopping cart icon" id="shopping-cart-icon">
         </div>
     </nav>
     <article>
-        <div id="your_order_block"></div>
-        <div id="details_block"></div>
+        <div id="your_order_block">
+            <h1>Your order</h1>
+            <div id="products">
+            </div>
+            <div id="time_to_prepare">
+                <h2>Time to prepare</h2>
+            </div>
+        </div>
+        <div id="details_block">
+            <h1>Details</h1>
+            <form method="post">
+                <label><input type="text" placeholder="Name"><br></label>
+                <label><input type="text" placeholder="Phone number"><br></label>
+                <label><input type="text" placeholder="Address Line 1"><br></label>
+                <label><input type="text" placeholder="Postcode"><br></label>
+                <label><input type="radio" name="pickup_type">DELIVERY</label>
+                <label><input type="radio" name="pickup_type" id="takeout">TAKEOUT</label><br>
+                <input type="submit" value="CHECKOUT AS GUEST">
+            </form>
+        </div>
     </article>
 </body>
 </html>
