@@ -117,7 +117,7 @@ def start_session():
     return log_data
 
 
-def add_order(name, phone, address, postcode, delivery_method, status='Not Started'):
+def add_order(name, phone, address, postcode, delivery_method, order, status='Not Started'):
     # Get the current date and time
     current_date = datetime.now()
 
@@ -129,6 +129,7 @@ def add_order(name, phone, address, postcode, delivery_method, status='Not Start
         'Address': address,
         'Postcode': postcode,
         'DeliveryMethod': delivery_method,
+        'Order': order,
         'Status': status
     }
 

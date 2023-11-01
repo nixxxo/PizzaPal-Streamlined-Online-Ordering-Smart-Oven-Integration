@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+/* GLOBAL AND NAVIGATION */
+
 body {
     font-family: 'Righteous', sans-serif;
     margin:0;
@@ -148,4 +150,253 @@ article {
     width: 135px;
     border-radius: 10px;
     margin-top: 10px;
+}
+
+/* DASHBOARD */
+
+.dashboard-body{
+    background-color: #FFFDF1;
+}
+
+.title{
+    margin:0.8em 0em;
+    text-align: center;
+    font-size: 4em;
+}
+
+.dashboard-section {
+    background-color: #F9F9F9;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-section table {
+    width: 100%;
+    border-collapse: separate; /* Indicate separate borders for cells */
+    border-spacing: 0; /* No space between cells */
+
+    /* Set the color for the transparent space between rows */
+    background: transparent;
+}
+
+.dashboard-section table tr {
+    border-radius: 10px; /* Rounded corners for each row */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: left;
+    font-family: Roboto, sans-serif;
+    margin: 10px;
+}
+
+th {
+    background-color: #FFAF14;
+    font-family: Righteous, sans-serif;
+    font-weight: 400;
+    font-size: 1.4em;
+    color: white
+}
+
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+
+tr:hover {
+    background-color: #e0e0e0;
+}
+
+button.update-button {
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+button.update-button[data-status="Not Started"] {
+    background-color: red;
+}
+
+button.update-button[data-status="Preparation"] {
+    background-color: rgb(255, 115, 0);
+}
+
+button.update-button[data-status="Cooking"] {
+    background-color: rgb(255, 196, 0);
+}
+
+button.update-button[data-status="Take Out"],
+button.update-button[data-status="Out for Delivery"] {
+    background-color: rgb(47, 137, 47);
+}
+
+button.update-button[data-status="Done"] {
+    background-color: rgb(4, 69, 4);
+}
+
+button.delete-button {
+    cursor: pointer;
+    border: none;
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+}
+
+button.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+td {
+    position: relative;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    
+}
+
+button {
+    padding: 12px 5px;
+    font-size: 0.8em;
+    position: absolute;
+    font-weight: bold;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+/* TRACKER */
+
+.title{
+    margin:0.8em 0em;
+    text-align: center;
+    font-size: 3em;
+}
+
+.tracker-form-section {
+    background-color: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50%;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.tracker-form-section form{
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tracker-form-section input{
+    border: 5px solid #ED190F;
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    transition: all;
+    transition-duration: 150ms;
+}
+
+.tracker-form-section input:hover{
+    scale: 110%;
+    transition: all;
+    transition-duration: 150ms;
+}
+
+button.tracker-login-btn {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    background-color: #ED190F;
+    color: white;
+    border-radius: 5px;
+    padding: 1em 2em;
+    transition: all;
+    transition-duration: 150ms;
+}
+
+button.tracker-login-btn:hover{
+    scale: 110%;
+    transition: all;
+    transition-duration: 150ms;
+}
+
+.tracker-progress{
+    background-color: #F9F9F9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 2em;
+    padding: 2em;
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+.circle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0.5rem;
+  border-radius: 50%;
+  background: #ed1a0f4a;
+  overflow: hidden;
+}
+.circle.per-25 {
+  background-image: conic-gradient(#ED190F 25%, #ed1a0f4a 0);
+}
+.circle.per-50 {
+  background-image: conic-gradient(#ED190F 50%, #ed1a0f4a 0);
+}
+.circle.per-75 {
+  background-image: conic-gradient(#ED190F 75%, #ed1a0f4a 0);
+}
+.circle.per-100 {
+  background-image: conic-gradient(#ED190F 100%, #ed1a0f4a 0);
+}
+.circle .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 115px;
+  height: 115px;
+  background: #FFAF14;
+  border-radius: 50%;
+  font-size: 1.85em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
 }
