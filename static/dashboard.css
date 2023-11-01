@@ -137,6 +137,10 @@ input[type=submit] {
     font-size: large;
 }
 
+input[type=submit]:hover {
+    background-color: darkred;
+}
+
 input:placeholder-shown {
     font-style: italic;
 }
