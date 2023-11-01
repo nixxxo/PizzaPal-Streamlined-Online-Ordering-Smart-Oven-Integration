@@ -147,15 +147,15 @@ article {
 }
 
 #person_img {
-    height: 700px;
+    width: 40%;
     background-color: #ffe7b2;
 }
 
 #about_us {
     background-color: #ffe7b2;
-    height: 700px;
     float: right;
-    width: 62.28%;
+    width: 60%;
+    height: 742px;
     text-align: center;
 }
 
