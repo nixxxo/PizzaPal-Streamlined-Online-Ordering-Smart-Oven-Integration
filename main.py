@@ -27,6 +27,7 @@ db = client["firstcome"]
 orders = db['Orders']
 carts = db['Carts']
 sessions = db['Sessions']
+products = db['Products']
 
 app = Flask(__name__)
 secret_key = secrets.token_urlsafe(24)
@@ -34,6 +35,79 @@ app.secret_key = secret_key
 
 
 # Database Functions
+
+
+## HOME ##
+
+@app.route('/add_to_cart/<product_id>', methods=['POST'])
+def add_to_cart(product_id):
+    if 'uid' not in session:
+        start_session()
+
+    cart_data = {
+        'session_id': str(session['uid']),
+        'product_id': product_id,
+        'timestamp': datetime.now()
+    }
+
+    carts.insert_one(cart_data)
+    return redirect(url_for('home'))
+
+
+@app.route('/')
+def home():
+    all_products = products.find()
+    return render_template('home.html', products=all_products)
+
+
+## CART CODE ##
+
+def start_session():
+    session['uid'] = uuid.uuid4()
+    log_data = {
+        'timestamp': datetime.now(),
+        'session_id': str(session['uid']),
+        'path': request.path,
+        'method': request.method,
+        'ip_address': request.remote_addr
+    }
+    sessions.insert_one(log_data)
+    return log_data
+
+
+def add_order(name, phone, address, postcode, delivery_method, order, status='Not Started'):
+    # Get the current date and time
+    current_date = datetime.now()
+
+    # Prepare order data
+    order_data = {
+        'Date': current_date,
+        'Name': name,
+        'Phone': phone,
+        'Address': address,
+        'Postcode': postcode,
+        'DeliveryMethod': delivery_method,
+        'Order': order,
+        'Status': status
+    }
+
+    orders.insert_one(order_data)
+
+
+@app.route('/cart')
+def cart():
+    if 'uid' not in session:
+        return redirect(url_for('home'))
+
+    user_cart = carts.find({'session_id': str(session['uid'])})
+    cart_products = []
+
+    for item in user_cart:
+        product = products.find_one({'_id': ObjectId(item['product_id'])})
+        if product:
+            cart_products.append(product)
+
+    return render_template('cart.html', products=cart_products, session=str(session['uid']))
 
 
 ## DASHBOARD CODE ###
@@ -103,47 +177,7 @@ def delete_order():
     return redirect('/dashboard')
 
 
-## CART CODE ##
-def start_session():
-    session['uid'] = uuid.uuid4()
-    log_data = {
-        'timestamp': datetime.now(),
-        'session_id': session['uid'],
-        'path': request.path,
-        'method': request.method,
-        'ip_address': request.remote_addr
-    }
-    sessions.insert_one(log_data)
-    return log_data
-
-
-def add_order(name, phone, address, postcode, delivery_method, order, status='Not Started'):
-    # Get the current date and time
-    current_date = datetime.now()
-
-    # Prepare order data
-    order_data = {
-        'Date': current_date,
-        'Name': name,
-        'Phone': phone,
-        'Address': address,
-        'Postcode': postcode,
-        'DeliveryMethod': delivery_method,
-        'Order': order,
-        'Status': status
-    }
-
-    orders.insert_one(order_data)
-
-
-## Home Page ##
-
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-
-## Tracker ##
+## TRACKER ##
 
 @app.route('/tracker-login', methods=['GET', 'POST'])
 def tracker_login():

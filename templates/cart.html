@@ -15,10 +15,18 @@
             <img src="../static/images/shopping-cart-icon.png" alt="shopping cart icon" id="shopping-cart-icon">
         </div>
     </nav>
+    <span>{{ session }}</span>
     <article class="main_page">
         <div id="your_order_block">
             <h1 class="cart_h1">Your order</h1>
             <div id="products">
+                <ul>
+                    {% for product in products %}
+                    <li>
+                        <strong>{{ product.Name }}</strong> - ${{ product.Price }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
             <div id="time_to_prepare">
                 <h2 class="cart_h2">Time to prepare</h2>

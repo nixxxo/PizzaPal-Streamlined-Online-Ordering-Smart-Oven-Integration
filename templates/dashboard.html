@@ -36,14 +36,14 @@
                 <td>{{ order.Postcode }}</td>
                 <td>{{ order.DeliveryMethod }}</td>
                 <td>
-                    <form action="/update_status" method="post">
+                    <form class="dashboard-form" action="/update_status" method="post">
                         <input type="hidden" name="order_id" value="{{ order._id }}">
                         <input type="hidden" name="new_status" value="{{ order.Status }}">
                         <button class="update-button" data-status="{{ order.Status }}" type="submit">{{ order.Status }}</button>
                     </form>
                 </td>
                 <td>
-                    <form action="/delete_order" method="post">
+                    <form class="dashboard-form" action="/delete_order" method="post">
                         <input type="hidden" name="order_id" value="{{ order._id }}">
                         <button class="delete-button" type="submit">Delete</button>
                     </form>
