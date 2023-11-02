@@ -1,9 +1,11 @@
+/* shared with all websites */
+
 body {
     font-family: Righteous, serif;
     margin:0;
 }
 
-nav {
+.nav_bar {
     text-align: right;
     display: flex;
     justify-content: right;
@@ -31,7 +33,7 @@ nav {
     color:red;
 }
 
-#white_block {
+#white_block, #white_block_cart {
     margin: 10px;
     background-color: white;
     height: 65px;
@@ -55,7 +57,16 @@ nav {
     border-color: red;
 }
 
-section {
+.main_page {
+    background-color: #FFFDF1;
+    width: 100%;
+    height: 800px;
+    padding-top: 10px;
+}
+
+/* index.html stuff */
+
+.ad_section {
     background-color: #FFDB91;
     width: 100%;
     height: 300px;
@@ -66,13 +77,6 @@ section {
 
 #ad {
     width: 38%;
-}
-
-article {
-    background-color: #FFFDF1;
-    width: 100%;
-    height: 800px;
-    padding-top: 10px;
 }
 
 .pizza_block {
@@ -170,7 +174,7 @@ article {
     padding-bottom: 30px;
 }
 
-h1 {
+#about_us_h1 {
     font-size: 70px;
 }
 
@@ -184,4 +188,94 @@ h1 {
 
 #map:hover {
     border-color: darkred;
+}
+
+/* cart.html stuff */
+
+#white_block_cart {
+    background-color: #FF726B
+}
+
+#your_order_block, #details_block {
+    float: left;
+    margin-top: 150px;
+    margin-left: 100px;
+    background-color: #F9F9F9;
+    height: 55%;
+    width: 55%;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 5px 5px 10px dimgray;
+}
+
+#details_block {
+    width: 25%;
+    margin-left: 150px;
+    height: 70%;
+}
+
+.cart_h1 {
+    font-size: 50px;
+}
+
+#products, #time_to_prepare {
+    display: flex;
+    float: left;
+    margin-left: 65px;
+    width: 50%;
+    height: 60%;
+    background-color: white;
+    border-color: red;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+#time_to_prepare {
+    width: 30%;
+}
+
+.cart_h2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=text] {
+    margin-top: 15px;
+    border-color: red;
+    border-radius: 10px;
+    border-width: 3px;
+    width: 60%;
+    height: 35px;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+input[type=radio] {
+    margin-top: 50px;
+    margin-right: 10px;
+    accent-color: red;
+}
+
+#takeout {
+    margin-left: 20px;
+}
+
+input[type=submit] {
+    font-family: Roboto, serif;
+    color: white;
+    margin-top: 40px;
+    border-style: hidden;
+    background-color: red;
+    border-radius: 10px;
+    height: 50px;
+    width: 50%;
+    font-size: large;
+}
+
+input[type=submit]:hover {
+    background-color: darkred;
+}
+
+input:placeholder-shown {
+    font-style: italic;
 }
