@@ -8,7 +8,7 @@ body {
     margin:0;
 }
 
-nav {
+.nav_bar {
     text-align: right;
     display: flex;
     justify-content: right;
@@ -27,9 +27,27 @@ nav a{
 }
 
 #logo {
-    width: 200px;
+    width: 10%;
     margin-right: auto;
     padding-top: 75px;
+}
+
+@media screen and (min-width: 1080px) and (max-width: 1400px) {
+    #logo {
+        width: 15%;
+    }
+}
+
+@media screen and (max-width: 1080px) and (min-width: 540px) {
+    #logo {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    #logo {
+        width: 30%;
+    }
 }
 
 .nav_text {
@@ -41,7 +59,7 @@ nav a{
     color:red;
 }
 
-#white_block {
+#white_block, #white_block_cart {
     margin: 10px;
     background-color: white;
     height: 65px;
@@ -53,7 +71,7 @@ nav a{
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.2s;
+    transition: all 0.3s;
 }
 
 #shopping-cart-icon {
@@ -61,41 +79,63 @@ nav a{
 }
 
 #white_block:hover {
-    height: 67px;
     width: 67px;
     border-color: red;
 }
 
-section {
+.main_page {
+    background-color: #FFFDF1;
+    width: 100%;
+    height: 800px;
+    padding-top: 10px;
+}
+
+/* index.html stuff */
+
+.ad_section {
     background-color: #FFDB91;
     width: 100%;
-    height: 250px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #ad {
-    width: 500px;
+    width: 38%;
 }
 
-article {
-    background-color: #FFFDF1;
-    width: 100%;
-    height: 400px;
-    padding-top: 10px;
+@media screen and (min-width: 1080px) and (max-width: 1400px) {
+    #ad {
+        width: 50%;
+    }
 }
+
+@media screen and (max-width: 1080px) and (min-width: 540px) {
+    #ad {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    #ad {
+        width: 90%;
+    }
+}
+
 
 .pizza_block {
+    margin-bottom: 10px;
     background-color: #ffe1be;
     width: 200px;
     height: 350px;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    margin-left: 50px;
+    margin-left: 150px;
     flex-direction: column;
-    align-items: center;
+    float: left;
+    box-shadow: 3px 3px 5px dimgray;
 }
 
 .pizza_white_box {
@@ -136,13 +176,13 @@ article {
 }
 
 .pizza_desc {
-    font-size: 8px;
-    font-family: "Roboto Light";
+    font-size: 9px;
+    font-family: "Roboto Light", serif;
 }
 
 .button_text {
     background-color: red;
-    font-family: Roboto;
+    font-family: Roboto, serif;
     font-weight: bold;
     color: white;
     border-width: 0;

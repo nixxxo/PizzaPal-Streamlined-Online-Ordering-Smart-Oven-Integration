@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <nav class="nav_bar">
+        <img src="../static/images/logo.png" alt="logo" id="logo">
+        <span class="nav_text">home</span>
+        <span class="nav_text">tracker</span>
+        <div id="white_block_cart">
+            <img src="../static/images/shopping-cart-icon.png" alt="shopping cart icon" id="shopping-cart-icon">
+        </div>
+    </nav>
+    <article class="main_page">
+        <div id="your_order_block">
+            <h1 class="cart_h1">Your order</h1>
+            <div id="products">
+            </div>
+            <div id="time_to_prepare">
+                <h2 class="cart_h2">Time to prepare</h2>
+            </div>
+        </div>
+        <div id="details_block">
+            <h1 class="cart_h1">Details</h1>
+            <form method="post">
+                <label><input type="text" placeholder="Name"><br></label>
+                <label><input type="text" placeholder="Phone number"><br></label>
+                <label><input type="text" placeholder="Address Line 1"><br></label>
+                <label><input type="text" placeholder="Postcode"><br></label>
+                <label><input type="radio" name="pickup_type">DELIVERY</label>
+                <label><input type="radio" name="pickup_type" id="takeout">TAKEOUT</label><br>
+                <input type="submit" value="CHECKOUT AS GUEST">
+            </form>
+        </div>
+    </article>
+</body>
+</html>
