@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Tracker</title>
+    <link rel="stylesheet" href="../static/styles.css">
+
+</head>
+<body>
+    <nav>
+        <img src="../static/images/logo.png" alt="logo" id="logo">
+        <span class="nav_text"><a href="/">home</a></span>
+        <span class="nav_text"><a href="/tracker-login">tracker</a></span>
+        <div id="white_block">
+            <img src="../static/images/shooping-cart-icon.png" alt="shooping cart icon" id="shopping-cart-icon">
+        </div>
+    </nav>
+    <div>
+        <div class="tracker-main">
+            <h1 class="title">
+                Your Order
+            </h1>
+            <div class="order-info">
+                <div class="order-products"></div>
+                <div class="order-time"></div>
+            </div>
+        </div>
+        <div>
+            <h1 class="title">
+                Details
+            </h1>
+            <div class="client-info">
+                <span>{{ order.Name }}</span>
+            </div>
+            <div class="client-info">
+                <span>{{ order.Phone }}</span>
+            </div>
+            <div class="client-info">
+                <span>{{ order.Address }}</span>
+            </div>
+            <div class="client-info">
+                <span>{{ order.Postcode }}</span>
+            </div>
+            <span class="client-delivery">{{ order.DeliveryMethod }}</span>
+        </div>
+    </div>
+    <div class="tracker-progress">
+        <h1 class="title">Tracker</h1>
+        <div class="wrap-circles">
+            <div class="circle per-25">
+                <div class="inner">0%</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body class="dashboard-body">
+    <nav>
+        <img src="../static/images/logo.png" alt="logo" id="logo">
+        <span class="nav_text"><a href="/">home</a></span>
+        <span class="nav_text"><a href="/tracker">tracker</a></span>
+        <div id="white_block">
+            <img src="../static/images/shooping-cart-icon.png" alt="shooping cart icon" id="shopping-cart-icon">
+        </div>
+    </nav>
+    <h1 class="title">Dashboard</h1>
+    <div class="dashboard-section">
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Postcode</th>
+                <th>Delivery Method</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.Date }}</td>
+                <td>{{ order.Name }}</td>
+                <td>{{ order.Phone }}</td>
+                <td>{{ order.Address }}</td>
+                <td>{{ order.Postcode }}</td>
+                <td>{{ order.DeliveryMethod }}</td>
+                <td>
+                    <form action="/update_status" method="post">
+                        <input type="hidden" name="order_id" value="{{ order._id }}">
+                        <input type="hidden" name="new_status" value="{{ order.Status }}">
+                        <button class="update-button" data-status="{{ order.Status }}" type="submit">{{ order.Status }}</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/delete_order" method="post">
+                        <input type="hidden" name="order_id" value="{{ order._id }}">
+                        <button class="delete-button" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
