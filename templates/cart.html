@@ -76,6 +76,7 @@
                 {% for product in products %}
                     <input type="hidden" name="products" value="{{ product.Name }}">
                     <input type="hidden" name="prices" value="{{ product.Price }}">
+                    <input type="hidden" name="ingredients" value="{{ product.Ingredients }}">
                 {% endfor %}
                 <span>Total: ${{total}}</span>
                 <input type="submit" value="Checkout">

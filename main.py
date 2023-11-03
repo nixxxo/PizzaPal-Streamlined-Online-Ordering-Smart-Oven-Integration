@@ -75,7 +75,7 @@ def start_session():
     return log_data
 
 
-def add_order(name, phone, address, postcode, delivery_method, order,total_price, status='Not Started'):
+def add_order(name, phone, address, postcode, delivery_method, order, total_price, status='Not Started'):
     # Get the current date and time
     current_date = datetime.now()
 
@@ -106,16 +106,19 @@ def checkout():
     # Retrieve the products' details from the form
     products = request.form.getlist('products')
     prices = request.form.getlist('prices')
+    ingredients = request.form.getlist('ingredients')
     total_price = sum([float(price) for price in prices])
 
     order = []
 
     # Create a list of dictionaries for each ordered product
-    for product, price in zip(products, prices):
-        order.append({'Name': product, 'Price': float(price)})
+    for product, ingredient in zip(products, ingredients):
+        order.append({'Name': product, 'Ingredients': ingredient})
 
     add_order(name, phone, address, postcode,
               delivery_method, order, total_price)
+    result = carts.delete_one({'session_id': str(session['uid'])})
+    result = sessions.delete_one({'session_id': str(session['uid'])})
     return redirect(f'/tracker/{phone}')
 
 

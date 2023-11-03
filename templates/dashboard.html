@@ -26,6 +26,8 @@
                 <th>Address</th>
                 <th>Postcode</th>
                 <th>Delivery Method</th>
+                <th>Order Details</th>
+                <th>Total Price</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -37,6 +39,14 @@
                 <td>{{ order.Address }}</td>
                 <td>{{ order.Postcode }}</td>
                 <td>{{ order.DeliveryMethod }}</td>
+                <td>
+                    <ul>
+                        {% for item in order.Order %}
+                            <li><strong>{{ item.Name }}</strong><br><span style="font-size: 0.6em;">{{ item.Ingredients }}</span></li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>${{ order['Total Price'] }}</td>
                 <td>
                     <form class="dashboard-form" action="/update_status" method="post">
                         <input type="hidden" name="order_id" value="{{ order._id }}">

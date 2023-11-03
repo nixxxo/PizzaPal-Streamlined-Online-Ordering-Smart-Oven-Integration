@@ -648,6 +648,7 @@ dashboard-form {
     font-size: 0.8em;
     position: absolute;
     font-weight: bold;
+    font-family: "Roboto";
     top: 50%;
     transform: translateY(-50%);
     left: 0;
