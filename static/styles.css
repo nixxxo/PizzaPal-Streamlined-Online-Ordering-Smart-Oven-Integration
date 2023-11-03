@@ -7,6 +7,13 @@ body {
     font-family: 'Righteous', sans-serif;
     margin:0;
 }
+.basic-body {
+    background-color: #FFFDF1;
+}
+
+button {
+    font-family: 'Righteous', sans-serif;
+}
 
 /* Navigation */
 
@@ -292,60 +299,126 @@ nav a:hover{
 
 /* CART */
 
-#white_block_cart {
-    background-color: #FF726B
-}
-
-#your_order_block, #details_block {
-    float: left;
-    margin-top: 150px;
-    margin-left: 100px;
-    background-color: #F9F9F9;
-    height: 55%;
-    width: 55%;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: 5px 5px 10px dimgray;
-}
-
-
-#details_block {
-    width: 25%;
-    margin-left: 150px;
-    height: 70%;
-}
-
-
-.cart_h1 {
-    font-size: 3vw;
-}
-
-#products, #time_to_prepare {
+.cart-layout{
     display: flex;
-    float: left;
-    margin-left: 65px;
-    width: 50%;
-    height: 60%;
-    background-color: white;
-    border-color: red;
-    border-style: solid;
-    border-radius: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: auto;
 }
 
-#time_to_prepare {
+.order{
+    width: 70%;
+    border-radius: 15px;
+    background-color: #F9F9F9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 1.5em;
+    padding: 2em;
+}
+
+.customer-details{
+    display: flex;
+    border-radius: 15px;
+    margin: 1.5em;
+    padding: 2em;
+    flex-direction: column;
     width: 30%;
+    background-color: #F9F9F9;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.customer-details form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-.cart_h2 {
-    margin-left: auto;
-    margin-right: auto;
+
+.order-title{
+    font-size: 3em;
+    text-align: left;
+}
+
+.prepare-title{
+    font-size: 1.5em;
+    text-align: left;
+}
+
+.order-details{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: start;
+    justify-content: space-between;
+}
+
+#products{
+    display: flex;
+    gap:1em;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+
+#products, #prepare {
+    padding: 1.5em;
+    background-color: white;
+    border: solid #ED190F 3px;
+    border-radius: 10px;
+}
+
+#products{
+    width: 60%;
+}
+
+#prepare{
+    width: 35%;
+}
+
+#prepare div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#prepare div svg {
+    margin-right: 0.4em;
+}
+
+.order-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:2em;
+    justify-content: space-between;
+}
+
+.order-item-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.order-item-text h1{
+    margin: 0;
+}
+
+.order-item-details{
+    font-size: 0.6em;
+    font-family: "Roboto";
+    font-weight: 300;
+}
+
+.order-item-img{
+    height: 5em;
 }
 
 input[type=text] {
     margin-top: 15px;
-    border-color: red;
+    border: solid red 3px;
     border-radius: 10px;
-    border-width: 3px;
     width: 60%;
     height: 35px;
     font-size: 1.3vw;
@@ -356,10 +429,6 @@ input[type=radio] {
     margin-top: 50px;
     margin-right: 10px;
     accent-color: red;
-}
-
-#takeout {
-    margin-left: 20px;
 }
 
 input[type=submit] {
@@ -383,92 +452,76 @@ input:placeholder-shown {
 }
 
 @media screen and (min-width: 1080px) and (max-width: 1400px) {
-    #your_order_block {
-        width: 55%;
-        height: 55%;
-        margin-left: 50px;
-    }
-    #products {
-        margin-left: 50px;
-        width: 40%;
-    }
-    #details_block {
-        width: 25%;
-        margin-top: 100px;
-        margin-left: 100px;
-        margin-bottom: 30px;
-    }
-    .cart_h1 {
-        font-size: 4vw;
-    }
-    .cart_h2 {
-        font-size: 2vw;
-    }
     input[type=text] {
         font-size: 1.5vw;
     }
     input[type=submit] {
         font-size: 1vw;
     }
+
+    .cart-layout{
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
 
 @media screen and (max-width: 1080px) and (min-width: 650px) {
-    #your_order_block {
-        width: 80%;
-        height: 60%;
-        margin-left: 100px;
-    }
-    #products {
-        margin-left: 50px;
-        width: 45%;
-    }
-    #details_block {
-        width: 60%;
-        margin-top: 100px;
-        margin-left: 175px;
-        margin-bottom: 30px;
-    }
-    .cart_h1 {
-        font-size: 5vw;
-    }
-    .cart_h2 {
-        font-size: 2vw;
-    }
     input[type=text] {
         font-size: 1.8vw;
     }
     input[type=submit] {
         font-size: 2.2vw;
     }
+
+    .cart-layout{
+        flex-direction: column;
+        align-items: center;
+    }
+    .order-details{
+        flex-direction: column;
+        gap: 2em;
+        align-items: center;
+    }
+    #products, #prepare{
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+    }
+    #prepare {
+        text-align: center;
+    }
+
+    .customer-details{
+        width: 70%;
+    }
 }
 
 @media screen and (max-width: 650px) {
-    #your_order_block {
-        width: 80%;
-        height: 50%;
-        margin-left: 60px;
-    }
-    #products {
-        margin-left: 35px;
-        width: 35%;
-    }
-    #details_block {
-        width: 70%;
-        margin-top: 100px;
-        margin-left: 70px;
-        margin-bottom: 30px;
-    }
-    .cart_h1 {
-        font-size: 7vw;
-    }
-    .cart_h2 {
-        font-size: 2.5vw;
-    }
     input[type=text] {
         font-size: 2.7vw;
     }
     input[type=submit] {
         font-size: 2.5vw;
+    }
+    .cart-layout{
+        flex-direction: column;
+    }
+    .order-details{
+        flex-direction: column;
+        gap: 2em;
+    }
+    #products, #prepare{
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+    }
+    #prepare {
+        text-align: center;
+    }
+
+    .customer-details{
+        width: 70%;
     }
 }
 
@@ -632,6 +685,7 @@ dashboard-form {
 }
 
 .tracker-form-section input{
+    width: 100%;
     border: 5px solid #ED190F;
     border-radius: 10px;
     padding: 0.5em 1em;
@@ -640,11 +694,6 @@ dashboard-form {
     transition-duration: 150ms;
 }
 
-.tracker-form-section input:hover{
-    scale: 110%;
-    transition: all;
-    transition-duration: 150ms;
-}
 
 button.tracker-login-btn {
     position: relative;
@@ -656,6 +705,7 @@ button.tracker-login-btn {
     padding: 1em 2em;
     transition: all;
     transition-duration: 150ms;
+    font-size: 1em;
 }
 
 button.tracker-login-btn:hover{

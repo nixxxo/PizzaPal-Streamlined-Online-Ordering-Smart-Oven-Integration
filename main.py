@@ -75,7 +75,7 @@ def start_session():
     return log_data
 
 
-def add_order(name, phone, address, postcode, delivery_method, order, status='Not Started'):
+def add_order(name, phone, address, postcode, delivery_method, order,total_price, status='Not Started'):
     # Get the current date and time
     current_date = datetime.now()
 
@@ -88,10 +88,35 @@ def add_order(name, phone, address, postcode, delivery_method, order, status='No
         'Postcode': postcode,
         'DeliveryMethod': delivery_method,
         'Order': order,
+        'Total Price': total_price,
         'Status': status
     }
 
     orders.insert_one(order_data)
+
+
+@app.route('/checkout', methods=['POST'])
+def checkout():
+    name = request.form['name']
+    phone = request.form['phone']
+    address = request.form['address']
+    postcode = request.form['postcode']
+    delivery_method = request.form['pickup_type']
+
+    # Retrieve the products' details from the form
+    products = request.form.getlist('products')
+    prices = request.form.getlist('prices')
+    total_price = sum([float(price) for price in prices])
+
+    order = []
+
+    # Create a list of dictionaries for each ordered product
+    for product, price in zip(products, prices):
+        order.append({'Name': product, 'Price': float(price)})
+
+    add_order(name, phone, address, postcode,
+              delivery_method, order, total_price)
+    return redirect(f'/tracker/{phone}')
 
 
 @app.route('/cart')
@@ -101,13 +126,15 @@ def cart():
 
     user_cart = carts.find({'session_id': str(session['uid'])})
     cart_products = []
+    total_price = 0
 
     for item in user_cart:
         product = products.find_one({'_id': ObjectId(item['product_id'])})
+        total_price += product['Price']
         if product:
             cart_products.append(product)
 
-    return render_template('cart.html', products=cart_products, session=str(session['uid']))
+    return render_template('cart.html', products=cart_products, session=str(session['uid']), total=total_price)
 
 
 ## DASHBOARD CODE ###

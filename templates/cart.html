@@ -17,33 +17,68 @@
             </div>
         </a>
     </nav>
-    <span>{{ session }}</span>
-    <article class="main_page">
-        <div id="your_order_block">
-            <h1 class="cart_h1">Your order</h1>
-            <div id="products">
-                <ul>
+    <article class="main_page cart-layout">
+        <div class="order">
+            <h1 class="order-title">Your order</h1>
+            <div class="order-details">
+                <div id="products">
                     {% for product in products %}
-                    <li>
-                        <strong>{{ product.Name }}</strong> - ${{ product.Price }}
-                    </li>
+                    <div class="order-item">
+                        <div class="order-item-text">
+                            <h1>{{ product.Name }}</h1>
+                            <span class="order-item-details">Ingredients: {{ product.Ingredients }}</span>
+                            <span class="order-item-details">Price: ${{ product.Price }}</span>
+                        </div>
+                        <img class="order-item-img" src="../static/images/{{product.Image}}">
+                    </div>
                     {% endfor %}
-                </ul>
-            </div>
-            <div id="time_to_prepare">
-                <h2 class="cart_h2">Time to prepare</h2>
+                </div>
+                <div id="prepare">
+                    <h2 class="prepare-title">Time to prepare</h2>
+                    <div>
+                        <svg id='Timer_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+                            <g transform="matrix(0.83 0 0 0.83 12 12)" >
+                            <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-15, -15)" d="M 14 3 L 14 8 C 13.994899710454515 8.36063591657757 14.184375296169332 8.696081364571606 14.495872849714331 8.877887721486518 C 14.80737040325933 9.059694078401428 15.192629596740671 9.059694078401428 15.504127150285669 8.877887721486516 C 15.815624703830668 8.696081364571606 16.005100289545485 8.360635916577568 16 8 L 16 5.2011719 C 21.038002 5.7243045 25 9.8205415 25 15 C 25 20.534534 20.534534 25 15 25 C 9.4654664 25 5 20.534534 5 15 C 5 12.546287 5.8819179 10.312748 7.3457031 8.5742188 C 7.575998861631285 8.300690352143954 7.6428676717844715 7.925075064341225 7.521118846497712 7.588873973990278 C 7.399370021210953 7.252672883639331 7.107501724347231 7.006967410586125 6.75546599495036 6.94431922753278 C 6.4034302655534905 6.881671044479436 6.044714392660309 7.011598734895728 5.8144531 7.2851562 C 4.0602383 9.3686271 3 12.065713 3 15 C 3 21.615466 8.3845336 27 15 27 C 21.615466 27 27 21.615466 27 15 C 27 8.3845336 21.615466 3 15 3 L 14 3 z M 9.3945312 9.0078125 C 9.1017031 9.0505156 8.883125 9.3939687 9.078125 9.6992188 C 10.542125 11.996219 13.041937 15.870062 13.585938 16.414062 C 14.366937 17.195062 15.633062 17.195062 16.414062 16.414062 C 17.195062 15.633063 17.195062 14.366938 16.414062 13.585938 C 15.870062 13.040937 11.996219 10.542125 9.6992188 9.078125 C 9.5974687 9.013125 9.4921406 8.9935781 9.3945312 9.0078125 z" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                        <p><strong>Preparation:</strong> 10 minutes.</p>
+                    </div>
+                    <div>
+                        <svg id='Timer_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+                            <g transform="matrix(0.83 0 0 0.83 12 12)" >
+                            <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-15, -15)" d="M 14 3 L 14 8 C 13.994899710454515 8.36063591657757 14.184375296169332 8.696081364571606 14.495872849714331 8.877887721486518 C 14.80737040325933 9.059694078401428 15.192629596740671 9.059694078401428 15.504127150285669 8.877887721486516 C 15.815624703830668 8.696081364571606 16.005100289545485 8.360635916577568 16 8 L 16 5.2011719 C 21.038002 5.7243045 25 9.8205415 25 15 C 25 20.534534 20.534534 25 15 25 C 9.4654664 25 5 20.534534 5 15 C 5 12.546287 5.8819179 10.312748 7.3457031 8.5742188 C 7.575998861631285 8.300690352143954 7.6428676717844715 7.925075064341225 7.521118846497712 7.588873973990278 C 7.399370021210953 7.252672883639331 7.107501724347231 7.006967410586125 6.75546599495036 6.94431922753278 C 6.4034302655534905 6.881671044479436 6.044714392660309 7.011598734895728 5.8144531 7.2851562 C 4.0602383 9.3686271 3 12.065713 3 15 C 3 21.615466 8.3845336 27 15 27 C 21.615466 27 27 21.615466 27 15 C 27 8.3845336 21.615466 3 15 3 L 14 3 z M 9.3945312 9.0078125 C 9.1017031 9.0505156 8.883125 9.3939687 9.078125 9.6992188 C 10.542125 11.996219 13.041937 15.870062 13.585938 16.414062 C 14.366937 17.195062 15.633062 17.195062 16.414062 16.414062 C 17.195062 15.633063 17.195062 14.366938 16.414062 13.585938 C 15.870062 13.040937 11.996219 10.542125 9.6992188 9.078125 C 9.5974687 9.013125 9.4921406 8.9935781 9.3945312 9.0078125 z" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                        <p><strong>Cooking:</strong> 9-11 minutes.</p>
+                    </div>
+                    <div>
+                        <svg id='Timer_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+                            <g transform="matrix(0.83 0 0 0.83 12 12)" >
+                            <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-15, -15)" d="M 14 3 L 14 8 C 13.994899710454515 8.36063591657757 14.184375296169332 8.696081364571606 14.495872849714331 8.877887721486518 C 14.80737040325933 9.059694078401428 15.192629596740671 9.059694078401428 15.504127150285669 8.877887721486516 C 15.815624703830668 8.696081364571606 16.005100289545485 8.360635916577568 16 8 L 16 5.2011719 C 21.038002 5.7243045 25 9.8205415 25 15 C 25 20.534534 20.534534 25 15 25 C 9.4654664 25 5 20.534534 5 15 C 5 12.546287 5.8819179 10.312748 7.3457031 8.5742188 C 7.575998861631285 8.300690352143954 7.6428676717844715 7.925075064341225 7.521118846497712 7.588873973990278 C 7.399370021210953 7.252672883639331 7.107501724347231 7.006967410586125 6.75546599495036 6.94431922753278 C 6.4034302655534905 6.881671044479436 6.044714392660309 7.011598734895728 5.8144531 7.2851562 C 4.0602383 9.3686271 3 12.065713 3 15 C 3 21.615466 8.3845336 27 15 27 C 21.615466 27 27 21.615466 27 15 C 27 8.3845336 21.615466 3 15 3 L 14 3 z M 9.3945312 9.0078125 C 9.1017031 9.0505156 8.883125 9.3939687 9.078125 9.6992188 C 10.542125 11.996219 13.041937 15.870062 13.585938 16.414062 C 14.366937 17.195062 15.633062 17.195062 16.414062 16.414062 C 17.195062 15.633063 17.195062 14.366938 16.414062 13.585938 C 15.870062 13.040937 11.996219 10.542125 9.6992188 9.078125 C 9.5974687 9.013125 9.4921406 8.9935781 9.3945312 9.0078125 z" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                        <p><strong>Delivery:</strong> 15 minutes.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="details_block">
-            <h1 class="cart_h1">Details</h1>
-            <form method="post">
-                <label><input type="text" placeholder="Name"><br></label>
-                <label><input type="text" placeholder="Phone number"><br></label>
-                <label><input type="text" placeholder="Address Line 1"><br></label>
-                <label><input type="text" placeholder="Postcode"><br></label>
-                <label><input type="radio" name="pickup_type">DELIVERY</label>
-                <label><input type="radio" name="pickup_type" id="takeout">TAKEOUT</label><br>
-                <input type="submit" value="CHECKOUT AS GUEST">
+        <div class="customer-details">
+            <h1 class="title">Details</h1>
+            <form method="post" action="/checkout">
+                <input type="text" name="name" placeholder="Name">
+                <input type="text" name="phone" placeholder="Phone Number">
+                <input type="text" name="address" placeholder="Adress Line">
+                <input type="text" name="postcode" placeholder="Postcode">
+                <div>
+                    <label><input type="radio" name="pickup_type" value="delivery">Delivery</label>
+                    <label><input type="radio" name="pickup_type" value="takeout">Takeout</label>
+                </div>
+                {% for product in products %}
+                    <input type="hidden" name="products" value="{{ product.Name }}">
+                    <input type="hidden" name="prices" value="{{ product.Price }}">
+                {% endfor %}
+                <span>Total: ${{total}}</span>
+                <input type="submit" value="Checkout">
             </form>
         </div>
     </article>

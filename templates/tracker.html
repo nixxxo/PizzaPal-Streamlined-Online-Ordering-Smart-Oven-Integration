@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../static/styles.css">
 
 </head>
-<body>
+<body class="basic-body">
     <nav class="nav_bar">
         <img src="../static/images/logo.png" alt="logo" id="logo">
         <span class="nav_text"><a href="/">home</a></span>
@@ -18,33 +18,33 @@
         </a>
     </nav>
     <div>
-        <div class="tracker-main">
-            <h1 class="title">
-                Your Order
-            </h1>
-            <div class="order-info">
-                <div class="order-products"></div>
-                <div class="order-time"></div>
+        <article class="main_page">
+            <div id="your_order_block">
+                <h1 class="cart_h1">Your order</h1>
+                <div id="products">
+                    <ul>
+                        {% for product in products %}
+                        <li>
+                            <strong>{{ product.Name }}</strong> - ${{ product.Price }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div id="time_to_prepare">
+                    <h2 class="cart_h2">Time to prepare</h2>
+                </div>
             </div>
-        </div>
-        <div>
-            <h1 class="title">
-                Details
-            </h1>
-            <div class="client-info">
-                <span>{{ order.Name }}</span>
+            <div id="details_block">
+                <h1 class="cart_h1">Details</h1>
+                <form method="post">
+                    <label><input type="text" placeholder="{{ order.Name }}" disabled><br></label>
+                    <label><input type="text" placeholder="{{ order.Phone }}"><br></label>
+                    <label><input type="text" placeholder="{{ order.Address }}"><br></label>
+                    <label><input type="text" placeholder="{{ order.Postcode }}"><br></label>
+                    <span class="client-delivery">{{ order.DeliveryMethod }}</span>
+                </form>
             </div>
-            <div class="client-info">
-                <span>{{ order.Phone }}</span>
-            </div>
-            <div class="client-info">
-                <span>{{ order.Address }}</span>
-            </div>
-            <div class="client-info">
-                <span>{{ order.Postcode }}</span>
-            </div>
-            <span class="client-delivery">{{ order.DeliveryMethod }}</span>
-        </div>
+        </article>
     </div>
     <div class="tracker-progress">
         <h1 class="title">Tracker</h1>
