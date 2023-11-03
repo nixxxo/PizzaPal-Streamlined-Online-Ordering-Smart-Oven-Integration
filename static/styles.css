@@ -17,7 +17,7 @@ body {
     align-items: center;
     background-color: #FFAF14;
     width: 100%;
-    height: 90px;
+    height: 6em;
     margin: auto;
     color: white;
 
@@ -26,31 +26,19 @@ body {
 nav a{
     text-decoration: none;
     color: white;
+    transition: all 150ms;
+}
+nav a:hover{
+    text-decoration: none;
+    color: #ED190F;
+    transition: all 150ms;
 }
 
 #logo {
-    width: 10%;
+    height: 95%;
     margin-right: auto;
-    padding-top: 75px;
 }
 
-@media screen and (min-width: 1080px) and (max-width: 1400px) {
-    #logo {
-        width: 15%;
-    }
-}
-
-@media screen and (max-width: 1080px) and (min-width: 540px) {
-    #logo {
-        width: 20%;
-    }
-}
-
-@media screen and (max-width: 540px) {
-    #logo {
-        width: 30%;
-    }
-}
 
 .nav_text {
     margin: 25px;
@@ -61,7 +49,8 @@ nav a{
     color:red;
 }
 
-#white_block, #white_block_cart {
+#white_block {
+    cursor: pointer;
     margin: 10px;
     background-color: white;
     height: 65px;
@@ -76,20 +65,26 @@ nav a{
     transition: all 0.3s;
 }
 
+#white_block:hover {
+    scale: 110%;
+    transition: all 0.3s;
+}
+
 #shopping-cart-icon {
-    width: 40px;
+    width: 30px;
+    transition: all 0.3s;
 }
 
 #white_block:hover {
-    width: 67px;
+    scale: 110%;
     border-color: red;
+    transition: all 0.3s;
 }
 
 .main_page {
     background-color: #FFFDF1;
     width: 100%;
-    height: 800px;
-    padding-top: 10px;
+    padding:5em 0em;
 }
 
 /* HOME */
@@ -104,37 +99,48 @@ nav a{
 }
 
 #ad {
-    width: 38%;
-}
-
-@media screen and (min-width: 1080px) and (max-width: 1400px) {
-    #ad {
-        width: 50%;
-    }
+    width: 50%;
 }
 
 @media screen and (max-width: 1080px) and (min-width: 540px) {
     #ad {
-        width: 65%;
+        width: 75%;
     }
 }
 
 @media screen and (max-width: 540px) {
     #ad {
-        width: 90%;
+        width: 100%;
     }
 }
 
 
+.grid-pizzas{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust based on your design */
+    gap: 20px; /* Adjust the gap between items */
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+}
+
+.pizza-block-align{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .pizza_block {
-    margin-bottom: 10px;
+    margin-right: 0;
+    margin-bottom: 20px;
     background-color: #ffe1be;
     width: 200px;
-    height: 350px;
+    height: 380px;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    margin-left: 150px;
+    justify-content: center;
     flex-direction: column;
     float: left;
     box-shadow: 3px 3px 5px dimgray;
@@ -143,7 +149,7 @@ nav a{
 .pizza_white_box {
     background-color: white;
     height: 175px;
-    width: 175px;
+    width: 90%;
     border-style: solid;
     border-width: 2px;
     border-color: red;
@@ -152,9 +158,9 @@ nav a{
 }
 
 .price_white_box {
+    max-width: 90%;
     background-color: white;
-    height: 35px;
-    width: 130px;
+    padding: 0.5em 1em;
     border-style: solid;
     border-width: 2px;
     border-color: red;
@@ -163,6 +169,7 @@ nav a{
 }
 
 .price_text {
+    text-align: center;
     margin: 30px;
     font-size: 30px;
 }
@@ -179,23 +186,25 @@ nav a{
 
 .pizza_desc {
     font-size: 9px;
-    font-family: "Roboto Light", serif;
+    font-family: "Roboto", serif;
+    text-align: center;
+    font-weight: 300;
 }
 
 
 .add-cart-btn {
+    cursor: pointer;
     background-color: red;
     font-family: Roboto, serif;
     font-weight: bold;
     color: white;
     border-width: 0;
-    height: 40px;
-    width: 135px;
+    max-width: 100%;
+    padding: 1.2em 2.4em;
     border-radius: 10px;
     margin-top: 10px;
     transition: all;
     transition-duration: 125ms;
-    width: 100%;
 }
 
 
@@ -211,27 +220,13 @@ nav a{
     margin-right: 50px;
 }
 
-@media screen and (min-width: 1080px) and (max-width: 1400px) {
-    #person_img {
-        width: 40%;
-    }
-}
 
-@media screen and (max-width: 1080px) and (min-width: 540px) {
-    #person_img {
-        width: 50%;
-    }
-}
-
-@media screen and (max-width: 540px) {
-    #person_img {
-        width: 51.5%;
-    }
-}
 
 #about_us {
     background-color: #ffe7b2;
     float: right;
+    display: flex;
+    flex-direction: row;
     padding-right: 50px;
     width: 100%;
     height: 100%;
@@ -239,28 +234,61 @@ nav a{
 }
 
 #desc {
-    font-family: Roboto, serif;
+    font-family: 'Roboto', serif;
     padding-top: 5px;
-    font-size: 1vw;
+    font-size: 1em;
     text-align: center;
     padding-bottom: 30px;
 }
 
 #about_us_h1 {
-    font-size: 5vw;
+    font-size: 4.5em;
 }
 
 #map {
-    width: 37%;
+    height: 250px;
     border-style: solid;
     border-radius: 25px;
     border-width: 2px;
     border-color: red;
 }
 
-#map:hover {
-    border-color: darkred;
+@media screen and (max-width: 1200px) {
+    #about_us {
+        display: flex;
+        flex-direction: column;
+        padding: 3em;
+    }
+    #person_img {
+        margin: auto;
+        width: 50%;
+        background-color: #ffe7b2;
+        border-radius: 15px;
+    }
+    #desc {
+        font-family: 'Roboto', serif;
+        padding-top: 5px;
+        font-size: 1em;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    
+    #about_us_h1 {
+        font-size: 5vw;
+    }
+    
+    #map {
+        height: auto;
+        max-width: 90%;
+        border-style: solid;
+        border-radius: 25px;
+        border-width: 2px;
+        border-color: red;
+    }
 }
+
+
+
 
 /* CART */
 
