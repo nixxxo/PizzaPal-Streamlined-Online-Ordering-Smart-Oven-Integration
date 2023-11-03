@@ -571,6 +571,7 @@ th, td {
     text-align: left;
     font-family: Roboto, sans-serif;
     margin: 10px;
+    text-transform: capitalize;
 }
 
 th {

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracker Login</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body class="basic-body">
+    <nav class="nav_bar">
+        <img src="../static/images/logo.png" alt="logo" id="logo">
+        <span class="nav_text"><a href="/">home</a></span>
+        <span class="nav_text"><a href="/tracker-login">tracker</a></span>
+        <a href="/cart">
+            <div id="white_block">
+                <img src="../static/images/shopping-cart-icon.png" alt="shooping cart icon" id="shopping-cart-icon">
+            </div>
+        </a>
+    </nav>
+    <div class="tracker-form-section">
+        <h1 class="title">Check Your Order Status</h1>
+        <form action="/tracker-login" method="post">
+            <span style="font-size: 0.7em ; color: red" class="no-phone">The Phone Number You Entered does not appear to have an active order.</span>
+            <input type="text" id="phone_number" name="phone_number" required placeholder="Phone Number (ex. +06382832930)"><br><br>
+            <button class="tracker-login-btn" type="submit" >Try Again</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -217,7 +217,7 @@ def tracker_login():
         if order:
             return redirect(url_for('tracker', phone_number=phone_number))
         else:
-            return "Phone number not found. Please try again."
+            return render_template('tracker_login_no_phone.html')
 
     return render_template('tracker_login.html')
 

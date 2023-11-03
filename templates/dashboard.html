@@ -40,11 +40,11 @@
                 <td>{{ order.Postcode }}</td>
                 <td>{{ order.DeliveryMethod }}</td>
                 <td>
-                    <ul>
+                    <ol>
                         {% for item in order.Order %}
                             <li><strong>{{ item.Name }}</strong><br><span style="font-size: 0.6em;">{{ item.Ingredients }}</span></li>
                         {% endfor %}
-                    </ul>
+                    </ol>
                 </td>
                 <td>${{ order['Total Price'] }}</td>
                 <td>
