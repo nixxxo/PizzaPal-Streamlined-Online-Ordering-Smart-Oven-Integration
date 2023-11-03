@@ -1,12 +1,64 @@
-import os
+import os, time, random, asyncio
 import pymongo
 from pymongo import MongoClient
 from datetime import datetime, timedelta
 import uuid
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
+from fhict_cb_01.custom_telemetrix import CustomTelemetrix
 from flask import Flask, render_template, request, redirect, url_for, session
 import secrets
+
+# Arduino variables
+
+board = CustomTelemetrix()
+
+red_pin = 4
+green_pin = 5
+yellow_pin = 7
+cooking_state = False
+LED_PINS = [red_pin, green_pin, yellow_pin]
+
+# Arduino functions
+def setup():
+    for pin in LED_PINS:
+        board.set_pin_mode_digital_output(pin)
+    time.sleep(0.1)
+    oven_empty()
+
+async def wait(seconds):
+    print("Start")
+    await asyncio.sleep(seconds)  # Non-blocking sleep for 1 second
+    print("End")
+
+def turn_off_leds():
+    for pin in LED_PINS:
+        board.digital_write(pin, 0)
+    time.sleep(0.1)
+
+def oven_empty():
+    turn_off_leds()
+    board.digital_write(red_pin, 1)
+    board.displayShow("frEE")
+
+def oven_cooking():
+    turn_off_leds()
+    cooking_time = random.randint(5, 6)
+    board.digital_write(yellow_pin, 1)
+    board.displayShow("PrCC")
+    asyncio.run(wait(cooking_time))
+    over_done()
+    return redirect('/dashboard')
+
+
+def over_done():
+    global cooking_state
+    board.digital_write(yellow_pin, 0)
+    board.digital_write(green_pin, 1)
+    board.displayShow("donE")
+    cooking_state = False
+
+setup()
 
 # Generates a random URL-safe string of 24 characters
 
@@ -117,6 +169,7 @@ def get_order_data():
 
 
 def update_status(order_id, new_status):
+    global cooking_state
     order = orders.find_one({'_id': ObjectId(order_id)})
     current_status = order['Status']
     delivery_method = order['DeliveryMethod']
@@ -133,13 +186,19 @@ def update_status(order_id, new_status):
         elif delivery_method == 'Delivery':
             new_status = 'Out for Delivery'
 
-    if current_index == 2 and delivery_method == 'Delivery':
+    if current_index == 2 and delivery_method == 'Delivery' and not cooking_state:
         if current_status == 'Cooking':
             new_status = 'Out for Delivery'
 
     if current_index == 3 and delivery_method == 'Take Out':
         if current_status == 'Take Out':
             new_status = 'Done'
+
+    if current_status == 'Cooking' and not cooking_state:
+        cooking_state = True
+        oven_cooking()
+    elif not cooking_state:
+        oven_empty()
 
     orders.update_one({'_id': ObjectId(order_id)}, {
                       '$set': {'Status': new_status}})
@@ -200,6 +259,6 @@ def tracker(phone_number):
     else:
         return "Order not found."
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
+
