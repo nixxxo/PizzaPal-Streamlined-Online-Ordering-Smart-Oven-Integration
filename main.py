@@ -225,8 +225,26 @@ def tracker_login():
 @app.route('/tracker/<phone_number>')
 def tracker(phone_number):
     order = orders.find_one({'Phone': phone_number})
+    cart_products = []
+    total_price = 0
     if order:
-        return render_template('tracker.html', order=order, status=order['Status'])
+        if order['Status'] == 'Not Started':
+            percentage = 0
+        elif order['Status'] == 'Preparation':
+            percentage = 25
+        elif order['Status'] == 'Cooking':
+            percentage = 50
+        elif order['Status'] == 'Take Out' or order['Status'] == 'Out for Delivery':
+            percentage = 75
+        elif order['Status'] == 'Done':
+            percentage = 100
+
+        for item in order['Order']:
+            product = products.find_one({'Name': item['Name']})
+            total_price += product['Price']
+            if product:
+                cart_products.append(product)
+        return render_template('tracker.html', order=order, status=order['Status'], percentage=percentage, order_products=cart_products, total_price=total_price)
     else:
         return "Order not found."
 

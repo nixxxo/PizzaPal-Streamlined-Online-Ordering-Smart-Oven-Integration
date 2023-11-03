@@ -666,6 +666,8 @@ dashboard-form {
     font-size: 3em;
 }
 
+
+
 .tracker-form-section {
     background-color: #F9F9F9;
     display: flex;
@@ -726,6 +728,39 @@ button.tracker-login-btn:hover{
     padding: 2em;
 }
 
+.tracker-delivery{
+    color: #ED190F;
+    font-size: 2em;
+    margin-top: 1em;
+    text-transform: capitalize;
+}
+
+.tracker-price{
+    font-size: 2em;
+    margin: 0.5em auto;
+}
+
+@media screen and (max-width: 800px) {
+    .title{
+        margin:0.6em 0em;
+        text-align: center;
+        font-size: 2em;
+    }
+
+    .tracker-form-section {
+        background-color: #F9F9F9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 90%;
+        padding: 20px;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 5em;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
 
 @import url("https://fonts.googleapis.com/css?family=Lato:300");
 *, *::before, *::after {
@@ -741,21 +776,23 @@ button.tracker-login-btn:hover{
   border-radius: 50%;
   background: #ed1a0f4a;
   overflow: hidden;
+  transition: all 125ms;
 }
 .circle.per-25 {
-  background-image: conic-gradient(#ED190F 25%, #ed1a0f4a 0);
+  background-image: conic-gradient(#ed730f 25%, #adadad4a 0);
 }
 .circle.per-50 {
-  background-image: conic-gradient(#ED190F 50%, #ed1a0f4a 0);
+  background-image: conic-gradient(#ede90f 50%, #adadad4a 0);
 }
 .circle.per-75 {
-  background-image: conic-gradient(#ED190F 75%, #ed1a0f4a 0);
+  background-image: conic-gradient(rgb(54, 181, 12) 75%, #adadad4a 0);
 }
 .circle.per-100 {
-  background-image: conic-gradient(#ED190F 100%, #ed1a0f4a 0);
+  background-image: conic-gradient(#00a053 100%, #adadad4a 0);
 }
 .circle .inner {
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -764,9 +801,9 @@ button.tracker-login-btn:hover{
   transform: translate(-50%, -50%);
   width: 115px;
   height: 115px;
-  background: #FFAF14;
+  background: #ff1414;
   border-radius: 50%;
-  font-size: 1.85em;
+  font-size: 1em;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.75);
 }
