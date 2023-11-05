@@ -16,6 +16,7 @@ board = CustomTelemetrix()
 red_pin = 4
 green_pin = 5
 yellow_pin = 7
+buzzer = 3
 cooking_state = False
 LED_PINS = [red_pin, green_pin, yellow_pin]
 
@@ -23,6 +24,7 @@ LED_PINS = [red_pin, green_pin, yellow_pin]
 def setup():
     for pin in LED_PINS:
         board.set_pin_mode_digital_output(pin)
+    board.set_pin_mode_digital_output(buzzer)
     time.sleep(0.1)
     oven_empty()
 
@@ -38,6 +40,7 @@ def turn_off_leds():
 
 def oven_empty():
     turn_off_leds()
+    board.digital_write(buzzer, 0)
     board.digital_write(red_pin, 1)
     board.displayShow("frEE")
 
@@ -45,16 +48,20 @@ def oven_cooking():
     turn_off_leds()
     cooking_time = random.randint(5, 6)
     board.digital_write(yellow_pin, 1)
-    board.displayShow("PrCC")
-    asyncio.run(wait(cooking_time))
-    over_done()
-    return redirect('/dashboard')
 
+    while cooking_time != 0:
+        board.displayShow(cooking_time)
+        asyncio.run(wait(1))
+        cooking_time -= 1
+
+    over_done()
+    # some code to refresh the website after the time would be ideal, i tried some things but cant figure it put
 
 def over_done():
     global cooking_state
     board.digital_write(yellow_pin, 0)
     board.digital_write(green_pin, 1)
+    board.digital_write(buzzer, 1)
     board.displayShow("donE")
     cooking_state = False
 
@@ -178,7 +185,8 @@ def update_status(order_id, new_status):
                        'Take Out', 'Out for Delivery', 'Done']
     current_index = status_sequence.index(current_status)
     next_index = (current_index + 1) % len(status_sequence)
-    new_status = status_sequence[next_index]
+    if not cooking_state or current_index != 2:
+        new_status = status_sequence[next_index]
 
     if current_index == 3:
         if delivery_method == 'Take Out':
