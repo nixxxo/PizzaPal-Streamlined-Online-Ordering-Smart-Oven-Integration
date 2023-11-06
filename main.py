@@ -176,8 +176,9 @@ def checkout():
 
     add_order(name, phone, address, postcode,
               delivery_method, order, total_price)
-    result = carts.delete_one({'session_id': str(session['uid'])})
+    result = carts.delete_many({'session_id': str(session['uid'])})
     result = sessions.delete_one({'session_id': str(session['uid'])})
+    del session['uid']
     return redirect(f'/tracker/{phone}')
 
 
@@ -218,25 +219,22 @@ def update_status(order_id, new_status):
     if not cooking_state or current_index != 2:
         new_status = status_sequence[next_index]
 
-    if current_index == 3:
+    
+
+    if current_status == 'Cooking':
         if delivery_method == 'Take Out':
             new_status = 'Take Out'
         elif delivery_method == 'Delivery':
             new_status = 'Out for Delivery'
-
-    if current_index == 2 and delivery_method == 'Delivery' and not cooking_state:
-        if current_status == 'Cooking':
-            new_status = 'Out for Delivery'
-
-    if current_index == 3 and delivery_method == 'Take Out':
-        if current_status == 'Take Out':
-            new_status = 'Done'
 
     if current_status == 'Cooking' and not cooking_state:
         cooking_state = True
         oven_cooking()
     elif not cooking_state:
         oven_empty()
+
+    if current_status == 'Take Out' and delivery_method == 'Take Out':
+        new_status = 'Done'
 
     orders.update_one({'_id': ObjectId(order_id)}, {
                       '$set': {'Status': new_status}})

@@ -70,8 +70,8 @@
                 <input type="text" name="address" placeholder="Adress Line">
                 <input type="text" name="postcode" placeholder="Postcode">
                 <div>
-                    <label><input type="radio" name="pickup_type" value="delivery">Delivery</label>
-                    <label><input type="radio" name="pickup_type" value="takeout">Takeout</label>
+                    <label><input type="radio" name="pickup_type" value="Delivery">Delivery</label>
+                    <label><input type="radio" name="pickup_type" value="Take Out">Take Out</label>
                 </div>
                 {% for product in products %}
                     <input type="hidden" name="products" value="{{ product.Name }}">
