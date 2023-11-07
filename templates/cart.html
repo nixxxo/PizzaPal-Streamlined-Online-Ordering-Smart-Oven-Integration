@@ -66,9 +66,9 @@
             <h1 class="title">Details</h1>
             <form method="post" action="/checkout">
                 <input type="text" name="name" placeholder="Name">
-                <input type="text" name="phone" placeholder="Phone Number">
-                <input type="text" name="address" placeholder="Adress Line">
-                <input type="text" name="postcode" placeholder="Postcode">
+                <input type="tel" name="phone" placeholder="Phone Number" pattern="\+?\d+" minlength="8" maxlength="16">
+                <input type="text" name="address" placeholder="Address Line">
+                <input type="text" name="postcode" placeholder="Postcode" minlength="6" maxlength="6">
                 <div>
                     <label><input type="radio" name="pickup_type" value="Delivery">Delivery</label>
                     <label><input type="radio" name="pickup_type" value="Take Out">Take Out</label>

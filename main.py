@@ -46,7 +46,7 @@ def oven_empty():
 
 def oven_cooking():
     turn_off_leds()
-    cooking_time = random.randint(5, 6)
+    cooking_time = random.randint(540, 660)
     board.digital_write(yellow_pin, 1)
 
     while cooking_time != 0:

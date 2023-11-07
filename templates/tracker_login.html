@@ -19,7 +19,7 @@
     <div class="tracker-form-section">
         <h1 class="title">Check Your Order Status</h1>
         <form action="/tracker-login" method="post">
-            <input type="text" id="phone_number" name="phone_number" required placeholder="Phone Number (ex. +06382832930)"><br><br>
+            <input type="tel" id="phone_number" name="phone_number" pattern="\+?\d+" minlength="8" maxlength="16" required placeholder="Phone Number (ex. +06382832930)"><br><br>
             <button class="tracker-login-btn" type="submit" >Check Tracker</button>
         </form>
     </div>

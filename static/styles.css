@@ -415,7 +415,7 @@ nav a:hover{
     height: 5em;
 }
 
-input[type=text] {
+input[type=text], input[type=tel] {
     margin-top: 15px;
     border: solid red 3px;
     border-radius: 10px;
@@ -807,4 +807,18 @@ button.tracker-login-btn:hover{
   font-size: 1em;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* test */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
