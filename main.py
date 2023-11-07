@@ -20,6 +20,7 @@ buzzer = 3
 cooking_state = False
 LED_PINS = [red_pin, green_pin, yellow_pin]
 
+
 # Arduino functions
 def setup():
     for pin in LED_PINS:
@@ -28,15 +29,16 @@ def setup():
     time.sleep(0.1)
     oven_empty()
 
+
 async def wait(seconds):
-    print("Start")
-    await asyncio.sleep(seconds)  # Non-blocking sleep for 1 second
-    print("End")
+    await asyncio.sleep(seconds)  # Non-blocking sleep for x seconds
+
 
 def turn_off_leds():
     for pin in LED_PINS:
         board.digital_write(pin, 0)
     time.sleep(0.1)
+
 
 def oven_empty():
     turn_off_leds()
@@ -44,9 +46,10 @@ def oven_empty():
     board.digital_write(red_pin, 1)
     board.displayShow("frEE")
 
+
 def oven_cooking():
     turn_off_leds()
-    cooking_time = random.randint(540, 660)
+    cooking_time = random.randint(5, 6)
     board.digital_write(yellow_pin, 1)
 
     while cooking_time != 0:
@@ -57,6 +60,7 @@ def oven_cooking():
     over_done()
     # some code to refresh the website after the time would be ideal, i tried some things but cant figure it put
 
+
 def over_done():
     global cooking_state
     board.digital_write(yellow_pin, 0)
@@ -64,6 +68,7 @@ def over_done():
     board.digital_write(buzzer, 1)
     board.displayShow("donE")
     cooking_state = False
+
 
 setup()
 
@@ -208,6 +213,7 @@ def get_order_data():
 
 def update_status(order_id, new_status):
     global cooking_state
+
     order = orders.find_one({'_id': ObjectId(order_id)})
     current_status = order['Status']
     delivery_method = order['DeliveryMethod']
@@ -216,20 +222,28 @@ def update_status(order_id, new_status):
                        'Take Out', 'Out for Delivery', 'Done']
     current_index = status_sequence.index(current_status)
     next_index = (current_index + 1) % len(status_sequence)
-    if not cooking_state or current_index != 2:
+
+    if current_index != 1 or not cooking_state:
         new_status = status_sequence[next_index]
 
-    
-
-    if current_status == 'Cooking':
+    if current_status == 'Cooking' and not cooking_state:
         if delivery_method == 'Take Out':
             new_status = 'Take Out'
         elif delivery_method == 'Delivery':
             new_status = 'Out for Delivery'
 
-    if current_status == 'Cooking' and not cooking_state:
+    if current_status == 'Preparation' and not cooking_state:
+        new_status = status_sequence[next_index]
+        orders.update_one({'_id': ObjectId(order_id)}, {
+            '$set': {'Status': new_status}})
+        current_index = status_sequence.index(new_status)
+        next_index = (current_index + 1) % len(status_sequence)
         cooking_state = True
         oven_cooking()
+        new_status = status_sequence[next_index]
+        orders.update_one({'_id': ObjectId(order_id)}, {
+            '$set': {'Status': new_status}})
+        # need to clean this code but it is working
     elif not cooking_state:
         oven_empty()
 
@@ -237,7 +251,7 @@ def update_status(order_id, new_status):
         new_status = 'Done'
 
     orders.update_one({'_id': ObjectId(order_id)}, {
-                      '$set': {'Status': new_status}})
+        '$set': {'Status': new_status}})
 
 
 @app.route('/dashboard')
@@ -309,10 +323,11 @@ def tracker(phone_number):
             total_price += product['Price']
             if product:
                 cart_products.append(product)
-        return render_template('tracker.html', order=order, status=order['Status'], percentage=percentage, order_products=cart_products, total_price=total_price)
+        return render_template('tracker.html', order=order, status=order['Status'], percentage=percentage,
+                               order_products=cart_products, total_price=total_price)
     else:
         return "Order not found."
 
+
 if __name__ == '__main__':
     app.run()
-
