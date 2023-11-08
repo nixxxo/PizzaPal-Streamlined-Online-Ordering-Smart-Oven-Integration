@@ -60,15 +60,16 @@
                         <p><strong>Delivery:</strong> 15 minutes.</p>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
         <div class="customer-details">
             <h1 class="title">Details</h1>
             <form method="post" action="/checkout">
                 <input type="text" name="name" placeholder="Name">
-                <input type="tel" name="phone" placeholder="Phone Number" pattern="\+?\d+" minlength="8" maxlength="16">
+                <input type="tel" name="phone" placeholder="Phone Number" pattern="\+?\d+" title="For example: +310677665544 or 777666555"  minlength="8" maxlength="16">
                 <input type="text" name="address" placeholder="Address Line">
-                <input type="text" name="postcode" placeholder="Postcode" pattern="\d{4}[a-zA-Z]{2}" minlength="6" maxlength="6">
+                <input type="text" name="postcode" placeholder="Postcode" pattern="\d{4}[a-zA-Z]{2}" title="For example: 5612WB" minlength="6" maxlength="6">
                 <div>
                     <label><input type="radio" name="pickup_type" value="Delivery">Delivery</label>
                     <label><input type="radio" name="pickup_type" value="Take Out">Take Out</label>

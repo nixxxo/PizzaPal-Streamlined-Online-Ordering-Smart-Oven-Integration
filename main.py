@@ -22,6 +22,7 @@ LED_PINS = [red_pin, green_pin, yellow_pin]
 
 
 # Arduino functions
+
 def setup():
     for pin in LED_PINS:
         board.set_pin_mode_digital_output(pin)
@@ -49,6 +50,7 @@ def oven_empty():
 
 def oven_cooking():
     turn_off_leds()
+    board.digital_write(buzzer, 0)
     cooking_time = random.randint(5, 6)
     board.digital_write(yellow_pin, 1)
 
@@ -57,11 +59,10 @@ def oven_cooking():
         asyncio.run(wait(1))
         cooking_time -= 1
 
-    over_done()
-    # some code to refresh the website after the time would be ideal, i tried some things but cant figure it put
+    oven_done()
 
 
-def over_done():
+def oven_done():
     global cooking_state
     board.digital_write(yellow_pin, 0)
     board.digital_write(green_pin, 1)
@@ -223,7 +224,7 @@ def update_status(order_id, new_status):
     current_index = status_sequence.index(current_status)
     next_index = (current_index + 1) % len(status_sequence)
 
-    if current_index != 1 or not cooking_state:
+    if (current_index != 1 and current_index != 2) or not cooking_state:
         new_status = status_sequence[next_index]
 
     if current_status == 'Cooking' and not cooking_state:
@@ -236,14 +237,14 @@ def update_status(order_id, new_status):
         new_status = status_sequence[next_index]
         orders.update_one({'_id': ObjectId(order_id)}, {
             '$set': {'Status': new_status}})
-        current_index = status_sequence.index(new_status)
-        next_index = (current_index + 1) % len(status_sequence)
         cooking_state = True
         oven_cooking()
-        new_status = status_sequence[next_index]
+        if delivery_method == 'Take Out':
+            new_status = 'Take Out'
+        elif delivery_method == 'Delivery':
+            new_status = 'Out for Delivery'
         orders.update_one({'_id': ObjectId(order_id)}, {
             '$set': {'Status': new_status}})
-        # need to clean this code but it is working
     elif not cooking_state:
         oven_empty()
 
