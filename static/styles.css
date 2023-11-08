@@ -20,7 +20,7 @@ button {
 .nav_bar {
     text-align: right;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
     background-color: #FFAF14;
     width: 100%;
@@ -41,9 +41,28 @@ nav a:hover{
     transition: all 150ms;
 }
 
-#logo {
+.nav_bar div{
     height: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+
+.nav_bar div a{
+    height: 100%;
+}
+
+#logo {
+    cursor: pointer;
+    height: 100%;
     margin-right: auto;
+    transition: all 125ms;
+}
+
+#logo:hover {
+    scale: 110%;
+    transition: all 125ms;
 }
 
 
@@ -106,6 +125,7 @@ nav a:hover{
 }
 
 #ad {
+    max-width: 800px;
     width: 50%;
 }
 
@@ -192,6 +212,7 @@ nav a:hover{
 }
 
 .pizza_desc {
+    width: 90%;
     font-size: 9px;
     font-family: "Roboto", serif;
     text-align: center;

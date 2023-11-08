@@ -53,7 +53,6 @@ def oven_cooking():
     board.digital_write(buzzer, 0)
     cooking_time = random.randint(5, 6)
     board.digital_write(yellow_pin, 1)
-
     while cooking_time != 0:
         board.displayShow(cooking_time)
         asyncio.run(wait(1))

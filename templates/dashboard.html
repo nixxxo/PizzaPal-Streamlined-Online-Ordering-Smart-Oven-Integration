@@ -4,17 +4,36 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../static/styles.css">
+    <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+    <script>
+        function updateStatus() {
+            var button = document.querySelector('.update-button');
+            var currentStatus = button.getAttribute('data-status');
+            console.log(currentStatus)
+            if (currentStatus === 'Preparation') {
+                console.log('Updating.')
+                button.innerHTML = 'Cooking';
+                button.setAttribute('data-status', 'Cooking');
+            }
+        }
+    </script>
 </head>
-<body class="dashboard-body">
+<body>
     <nav class="nav_bar">
-        <img src="../static/images/logo.png" alt="logo" id="logo">
-        <span class="nav_text"><a href="/">home</a></span>
-        <span class="nav_text"><a href="/tracker-login">tracker</a></span>
-        <a href="/cart">
-            <div id="white_block">
-                <img src="../static/images/shopping-cart-icon.png" alt="shooping cart icon" id="shopping-cart-icon">
-            </div>
-        </a>
+        <div>
+            <a href="/">
+                <img src="../static/images/logo.png" alt="logo" id="logo">
+            </a>
+        </div>
+        <div>
+            <span class="nav_text"><a href="/">home</a></span>
+            <span class="nav_text"><a href="/tracker-login">tracker</a></span>
+            <a href="/cart">
+                <div id="white_block">
+                    <img src="../static/images/shopping-cart-icon.png" alt="shooping cart icon" id="shopping-cart-icon">
+                </div>
+            </a>
+        </div>
     </nav>
     <h1 class="title">Dashboard</h1>
     <div class="dashboard-section">
@@ -51,7 +70,7 @@
                     <form class="dashboard-form" action="/update_status" method="post">
                         <input type="hidden" name="order_id" value="{{ order._id }}">
                         <input type="hidden" name="new_status" value="{{ order.Status }}">
-                        <button class="update-button" data-status="{{ order.Status }}" type="submit">{{ order.Status }}</button>
+                        <button onclick="updateStatus()" class="update-button" data-status="{{ order.Status }}" type="submit">{{ order.Status }}</button>
                     </form>
                 </td>
                 <td>
