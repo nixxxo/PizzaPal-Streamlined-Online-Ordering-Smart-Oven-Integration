@@ -15,7 +15,7 @@ R&D and Quality Assurance: Haroutiunian, Aron Haroutiunian A.P.J.
 ### Business Proccess Diagram
 ![Business Proccess Diagram](https://i.ibb.co/v4QpV9g/business-diagram-drawio.png)
 
-[Business Proccess Diagram](https://drive.google.com/file/d/1VfE-bTweXNINHH3pk8tDl2Isx_8YWRxY/view?usp=sharing)
+[Business Proccess Diagram](https://i.ibb.co/4109QJB/business-diagram-final.jpg)
 
 ### Project Plan
 - [Project Plan MD](project-plan.md)
